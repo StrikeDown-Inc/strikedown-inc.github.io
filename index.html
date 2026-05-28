@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZML Toolchain Distribution</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 1px solid #30363d;
+            padding: 40px;
+            border-radius: 8px;
+            background-color: #161b22;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #58f01b;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #8b949e;
+            margin-bottom: 25px;
+        }
+        .spinner {
+            border: 4px solid rgba(88, 240, 27, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #58f01b;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Zero Markleft-Language</h1>
+        <p>Transferring binaries (zml.exe & zml.elf)...</p>
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const repoOwner = window.location.hostname.split('.')[0];
+            const repoName = window.location.pathname.split('/')[1] || "zml-runtime";
+            
+            setTimeout(() => {
+                window.location.href = `https://github.com/${repoOwner}/${repoName}/releases/latest/download/zml_dist.zip`;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
