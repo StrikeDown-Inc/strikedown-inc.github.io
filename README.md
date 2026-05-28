@@ -1,1 +1,2 @@
-# strikedown-inc.github.io
+# Strike Down
+> *The way of a better web*
