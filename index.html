@@ -3,65 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZML Toolchain Distribution</title>
+    <title>ZML Control Hub | StrikeDown-Inc</title>
     <style>
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            border: 1px solid #30363d;
-            padding: 40px;
-            border-radius: 8px;
-            background-color: #161b22;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #58f01b;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #8b949e;
-            margin-bottom: 25px;
-        }
-        .spinner {
-            border: 4px solid rgba(88, 240, 27, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-left-color: #58f01b;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        body { background: #0d1117; color: #c9d1d9; font-family: sans-serif; padding: 40px; }
+        .box { border: 1px solid #30363d; background: #161b22; padding: 30px; border-radius: 8px; max-width: 900px; margin: 0 auto 20px; }
+        h1, h2 { color: #58f01b; }
+        textarea { width: 100%; height: 180px; background: #070a0e; border: 1px solid #30363d; color: #fff; padding: 10px; font-family: monospace; resize: none; }
+        .btn { display: inline-block; border: 1px solid #58f01b; color: #58f01b; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; background: transparent; cursor: pointer; }
+        .btn:hover { background: rgba(88, 240, 27, 0.1); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Zero Markleft-Language</h1>
-        <p>Transferring binaries (zml.exe & zml.elf)...</p>
-        <div class="spinner"></div>
+
+    <div class="box">
+        <h1>Zero Markleft-Language Engine</h1>
+        <p>Enterprise pipeline node deployed at <code>StrikeDown-Inc.github.io</code>.</p>
+        <a id="dl" class="btn" href="#">Fetch Core Build Artifacts (.ZIP)</a>
     </div>
 
+    <div class="box">
+        <h2>Workspace Node Emulator</h2>
+        <textarea id="code">/* Legacy Block Parsing Wrapper Validation
+<zml>
+/?Title /Web_Workspace
+/?Text /&Class /Main /ZML System Engine Active.
+>
+</zml></textarea>
+        <br><br>
+        <button class="btn" onclick="processEngineWorkspace()">Execute Workspace Compilation</button>
+    </div>
+
+    <script src="loader.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const repoOwner = window.location.hostname.split('.')[0];
-            const repoName = window.location.pathname.split('/')[1] || "zml-runtime";
-            
-            setTimeout(() => {
-                window.location.href = `https://github.com/${repoOwner}/${repoName}/releases/latest/download/zml_dist.zip`;
-            }, 1500);
-        });
+        document.getElementById('dl').href = `https://github.com/StrikeDown-Inc/strikedown-inc.github.io/releases/latest/download/zml_dist.zip`;
+        
+        function processEngineWorkspace() {
+            const raw = document.getElementById('code').value;
+            if(window.ZML && window.ZML.ready) {
+                window.ZML.compileLocal(raw);
+                alert("Compilation output verified. Check development console for asset tree updates.");
+            }
+        }
     </script>
 </body>
 </html>
